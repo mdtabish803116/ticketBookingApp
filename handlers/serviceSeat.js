@@ -29,7 +29,7 @@ async function bookSeats(seats){
     try {
         console.log("seats" , seats);
         if(seats<1){
-            throw new Error('minimum 1 seat required');
+            throw new Error('minimum 1 seat required to book');
         }
         else if(seats>7){
             throw new Error("user can book max 7 seats at time")
@@ -37,7 +37,11 @@ async function bookSeats(seats){
 
         const availableSeats=await Seat.find({booked:false});
         if(availableSeats.length<seats){
-            throw new Error(`only ${availableSeats.length} seats are vailable`)
+            if (availableSeats.length > 0) {  
+              throw new Error(`only ${availableSeats.length} seats remaining`)
+            }else {
+              throw new Error("No Seats available")
+            }
         }
 
         let availableInOneRow=[];

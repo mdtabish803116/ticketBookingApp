@@ -28,7 +28,6 @@ async function bookSeats(req,res){
     try {
 
         const seats=await seatService.bookSeats(req.body.seats);
-        console.log("TabishSeats" , seats);
         return res.status(200).send({"data":seats})
         
     } catch (error) {

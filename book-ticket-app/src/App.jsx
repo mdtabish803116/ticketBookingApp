@@ -49,7 +49,11 @@ function App() {
        body: JSON.stringify({"seats":seats})
      })
      let response = await data.json();
-     setBookedSeats(response.data)
+      if (response.error) {
+         alert(response.error)
+      }else {  
+          setBookedSeats(response.data)
+      }
      setLoading(false)
        
   }catch(error){
