@@ -1,0 +1,7 @@
+/node_modules
+/.env
+/package-lock.json
+
+/book-ticket-app/node_modules
+/book-ticket-app/.env
+/book-ticket-app/package-lock.json
